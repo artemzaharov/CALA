@@ -7,6 +7,12 @@ from openai import AsyncOpenAI
 # without changing the code — just set LM_STUDIO_URL in the environment.
 LM_STUDIO_URL = os.getenv("LM_STUDIO_URL", "http://host.docker.internal:1234/v1")
 
+# Model used for chat completions (entity extraction, answering questions).
+CHAT_MODEL = os.getenv("CHAT_MODEL", "local-model")
+
+# Model used to generate embeddings (vector representations of text).
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-nomic-embed-text-v1.5")
+
 # AsyncOpenAI makes non-blocking HTTP calls — compatible with async def endpoints.
 # The sync OpenAI client would block the event loop on every request.
 client = AsyncOpenAI(

@@ -16,8 +16,9 @@ Return ONLY valid JSON in this exact format, no other text:
 
 # System prompt for /query — keeps the model grounded in graph context only.
 # Prevents hallucination by restricting answers to what was actually ingested.
-QUERY_SYSTEM_PROMPT = """You are a helpful assistant that answers questions based strictly
-on the provided context from a knowledge graph.
+QUERY_SYSTEM_PROMPT = """You are a helpful assistant that answers questions using the provided context from a knowledge graph.
 
-If the answer is not in the context — say "I don't know".
-Do not make up information."""
+The context is a list of facts in the format: Entity RELATION Entity.
+Use these facts to answer the question. You may reason and infer from the facts.
+If the context contains absolutely no relevant information — say "I don't know".
+Do not invent facts that are not present or inferable from the context."""
